@@ -1,1 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Portal de Asistencia</title>
+
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    text-align: center;
+    padding: 30px;
+}
+
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+
+h1 {
+    font-size: 24px;
+}
+
+
+button {
+    width: 90%;
+    padding: 15px;
+    margin: 10px;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #1976d2;
+    color: white;
+}
+
+
+button:hover {
+    opacity: 0.85;
+}
+
+
+input {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    margin: 10px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+.logout {
+    background: #777;
+    margin-top: 25px;
+}
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div id="login">
+
+
+<h1>🧬 Fisiología UBA</h1>
+<h2>Acceso al sistema</h2>
+
+
+<input type="password" id="clave" placeholder="Ingrese clave">
+
+
+<br>
+
+
+<button onclick="ingresar()">Ingresar</button>
+
+
+<p id="mensaje"></p>
+
+
+</div>
+
+
+
+
+<div id="menu" class="hidden">
+
+
+<h1>🧬 Fisiología UBA</h1>
+
+
+<h2>Portal de Asistencia</h2>
+
+
+
+
+<button onclick="abrirAsistencia()">
+📷 Control de asistencia
+</button>
+
+
+
+
+<button onclick="abrirPanel()">
+📊 Panel de control
+</button>
+
+
+
+
+<button onclick="abrirConsulta()">
+👨‍🎓 Consulta estudiante
+</button>
+
+
+
+
+<button class="logout" onclick="cerrarSesion()">
+Cerrar sesión
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<script>
+
+
+const claveCorrecta = "CAMBIAR_CLAVE";
+
+
+
+
+window.onload = function(){
+
+
+if(localStorage.getItem("acceso") === "permitido"){
+    mostrarMenu();
+}
+
+
+};
+
+
+
+
+function ingresar(){
+
+
+let clave = document.getElementById("clave").value;
+
+
+if(clave === claveCorrecta){
+
+
+localStorage.setItem("acceso","permitido");
+
+
+mostrarMenu();
+
+
+}else{
+
+
+document.getElementById("mensaje").innerHTML =
+"Clave incorrecta";
+
+
+}
+
+
+}
+
+
+
+
+function mostrarMenu(){
+
+
+document.getElementById("login").style.display="none";
+document.getElementById("menu").style.display="block";
+
+
+}
+
+
+
+
+function cerrarSesion(){
+
+
+localStorage.removeItem("acceso");
+location.reload();
+
+
+}
+
+
+
+
+
+
+function abrirAsistencia(){
+
+
+window.open(
+"https://4everarnald1.github.io/lector-qr-asistencia/",
+"_blank"
+);
+
+
+}
+
+
+
+
+function abrirPanel(){
+
+
+window.open(
+"https://script.google.com/a/macros/fmed.uba.ar/s/AKfycbzIN4VZi1At1ZzXq1rh4r5aeXMaQkaIMTHb8PQ12EQFXlOsq1zwt5yHe_Kvo78m6w8D/exec?admin=1",
+"_blank"
+);
+
+
+}
+
+
+
+
+function abrirConsulta(){
+
+
+window.open(
+"https://script.google.com/a/macros/fmed.uba.ar/s/AKfycbzIN4VZi1At1ZzXq1rh4r5aeXMaQkaIMTHb8PQ12EQFXlOsq1zwt5yHe_Kvo78m6w8D/exec?consulta=1",
+"_blank"
+);
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>
 
