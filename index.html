@@ -1,101 +1,302 @@
 <!DOCTYPE html>
 <html lang="es">
+
+
 <head>
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Portal de Asistencia</title>
+<title>Sistema de control de asistencia - Módulo Fisiología</title>
 
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    text-align: center;
-    padding: 30px;
+
+
+*{
+box-sizing:border-box;
 }
 
 
-.container {
-    max-width: 400px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+body{
+
+
+font-family:Arial,sans-serif;
+text-align:center;
+margin:0;
+padding:10px;
+background:#eef2f5;
+
+
 }
 
 
-h1 {
-    font-size: 24px;
+
+
+.contenedor{
+
+
+width:100%;
+max-width:700px;
+min-height:100vh;
+margin:auto;
+background:white;
+border-radius:20px;
+padding:25px 15px;
+box-shadow:0 4px 15px rgba(0,0,0,0.18);
+
+
 }
 
 
-button {
-    width: 90%;
-    padding: 15px;
-    margin: 10px;
-    font-size: 17px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    background: #1976d2;
-    color: white;
+
+
+h1{
+
+
+font-size:32px;
+
+
 }
 
 
-button:hover {
-    opacity: 0.85;
+
+
+h2{
+
+
+font-size:28px;
+
+
 }
 
 
-input {
-    width: 80%;
-    padding: 12px;
-    font-size: 16px;
-    margin: 10px;
+
+
+h3{
+
+
+font-size:24px;
+
+
 }
 
 
-.hidden {
-    display: none;
+
+
+
+
+input{
+
+
+width:95%;
+max-width:400px;
+font-size:24px;
+padding:16px;
+margin:10px;
+text-align:center;
+border-radius:15px;
+border:2px solid #888;
+
+
 }
 
 
-.logout {
-    background: #777;
-    margin-top: 25px;
+
+
+
+
+button{
+
+
+width:95%;
+max-width:400px;
+font-size:22px;
+font-weight:bold;
+padding:18px;
+margin:12px;
+border-radius:15px;
+border:none;
+background:#1976d2;
+color:white;
+
+
 }
+
+
+
+
+
+
+button:hover{
+
+
+opacity:0.85;
+
+
+}
+
+
+
+
+
+
+#menu{
+
+
+display:none;
+
+
+}
+
+
+
+
+
+
+#mensajeLogin{
+
+
+font-size:22px;
+font-weight:bold;
+margin-top:20px;
+
+
+}
+
+
+
+
+
+
+.secundario{
+
+
+background:#555;
+
+
+}
+
+
+
+
 </style>
+
+
 
 
 </head>
 
 
+
+
 <body>
 
 
-<div class="container">
+
+
+<div class="contenedor">
+
+
+
+
+
+
+<!-- LOGIN -->
 
 
 <div id="login">
 
 
-<h1>🧬 Fisiología UBA</h1>
-<h2>Acceso al sistema</h2>
 
 
-<input type="password" id="clave" placeholder="Ingrese clave">
+<h1>
+🧬 Sistema de control de asistencia
+</h1>
+
+
+
+
+<h2>
+Módulo Fisiología
+</h2>
+
+
+
+
+<h3>
+🔐 Acceso docente
+</h3>
+
+
+
+
+
+
+<input
+id="usuario"
+placeholder="Usuario">
+
+
+
+
 
 
 <br>
 
 
-<button onclick="ingresar()">Ingresar</button>
 
 
-<p id="mensaje"></p>
+
+
+<input
+id="clave"
+type="password"
+placeholder="Clave">
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<button onclick="mostrarClave()">
+
+
+👁 Mostrar / ocultar clave
+
+
+</button>
+
+
+
+
+
+
+<button onclick="ingresar()">
+
+
+Ingresar
+
+
+</button>
+
+
+
+
+
+
+<div id="mensajeLogin"></div>
+
+
 
 
 </div>
@@ -103,47 +304,104 @@ input {
 
 
 
-<div id="menu" class="hidden">
 
 
-<h1>🧬 Fisiología UBA</h1>
 
 
-<h2>Portal de Asistencia</h2>
+
+
+<!-- MENU -->
+
+
+<div id="menu">
+
+
+
+
+<h1>
+🧬 Sistema de control de asistencia
+</h1>
+
+
+
+
+<h2>
+Módulo Fisiología
+</h2>
+
+
 
 
 
 
 <button onclick="abrirAsistencia()">
+
+
 📷 Control de asistencia
+
+
 </button>
+
+
 
 
 
 
 <button onclick="abrirPanel()">
+
+
 📊 Panel de control
+
+
 </button>
+
+
 
 
 
 
 <button onclick="abrirConsulta()">
+
+
 👨‍🎓 Consulta estudiante
+
+
 </button>
 
 
 
 
-<button class="logout" onclick="cerrarSesion()">
-Cerrar sesión
+
+
+
+
+<button class="secundario" onclick="cerrarSesion()">
+
+
+🚪 Cerrar sesión
+
+
 </button>
 
 
-</div>
+
+
 
 
 </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
 
 
 
@@ -151,20 +409,18 @@ Cerrar sesión
 <script>
 
 
-const claveCorrecta = "CAMBIAR_CLAVE";
+
+
+const usuarioCorrecto = "docentes";
+
+
+const claveCorrecta = "fisio2026";
 
 
 
 
-window.onload = function(){
 
 
-if(localStorage.getItem("acceso") === "permitido"){
-    mostrarMenu();
-}
-
-
-};
 
 
 
@@ -172,29 +428,119 @@ if(localStorage.getItem("acceso") === "permitido"){
 function ingresar(){
 
 
-let clave = document.getElementById("clave").value;
 
 
-if(clave === claveCorrecta){
+let usuario =
+document.getElementById("usuario")
+.value
+.toLowerCase()
+.trim();
 
 
-localStorage.setItem("acceso","permitido");
+
+
+
+
+let clave =
+document.getElementById("clave")
+.value
+.trim();
+
+
+
+
+
+
+
+
+
+
+if(
+usuario === usuarioCorrecto &&
+clave === claveCorrecta
+){
+
+
+
+
+localStorage.setItem(
+"accesoPortal",
+"ok"
+);
+
+
+
+
 
 
 mostrarMenu();
 
 
+
+
+
+
 }else{
 
 
-document.getElementById("mensaje").innerHTML =
-"Clave incorrecta";
+
+
+document.getElementById("mensajeLogin")
+.innerHTML =
+"❌ Usuario o clave incorrectos";
+
+
 
 
 }
 
 
+
+
 }
+
+
+
+
+
+
+
+
+
+
+function verificarSesion(){
+
+
+
+
+if(
+localStorage.getItem("accesoPortal") === "ok"
+){
+
+
+
+
+mostrarMenu();
+
+
+
+
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -202,11 +548,86 @@ document.getElementById("mensaje").innerHTML =
 function mostrarMenu(){
 
 
-document.getElementById("login").style.display="none";
-document.getElementById("menu").style.display="block";
+
+
+document.getElementById("login")
+.style.display="none";
+
+
+
+
+document.getElementById("menu")
+.style.display="block";
+
+
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function mostrarClave(){
+
+
+
+
+let campo =
+document.getElementById("clave");
+
+
+
+
+
+
+if(
+campo.type==="password"
+){
+
+
+
+
+campo.type="text";
+
+
+
+
+}else{
+
+
+
+
+campo.type="password";
+
+
+
+
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -214,11 +635,31 @@ document.getElementById("menu").style.display="block";
 function cerrarSesion(){
 
 
-localStorage.removeItem("acceso");
+
+
+localStorage.removeItem(
+"accesoPortal"
+);
+
+
+
+
+
+
 location.reload();
 
 
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -228,10 +669,14 @@ location.reload();
 function abrirAsistencia(){
 
 
+
+
 window.open(
 "https://4everarnald1.github.io/lector-qr-asistencia/",
 "_blank"
 );
+
+
 
 
 }
@@ -239,7 +684,17 @@ window.open(
 
 
 
+
+
+
+
+
+
+
+
 function abrirPanel(){
+
+
 
 
 window.open(
@@ -248,12 +703,26 @@ window.open(
 );
 
 
+
+
 }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
 function abrirConsulta(){
+
+
 
 
 window.open(
@@ -262,12 +731,32 @@ window.open(
 );
 
 
+
+
 }
+
+
+
+
+
+
+
+
+
+
+verificarSesion();
+
+
+
+
 
 
 </script>
 
 
-</body>
-</html>
 
+
+</body>
+
+
+</html>
