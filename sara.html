@@ -753,6 +753,53 @@ window.open(
 verificarSesion();
 
 
+function cambiarCursada(){
+
+  const url = "https://script.google.com/macros/s/AKfycbzZQpqXxzOZ42upnAb1t8eBg7WSOCPknYqNMyumVAdpq_Z_u9T3tLx6pmaYOEon666LyQ/exec";
+
+  fetch(url + "?cursadas=true")
+  .then(function(respuesta){
+
+    return respuesta.json();
+
+  })
+  .then(function(cursadas){
+
+    let texto = "";
+
+    cursadas.forEach(function(c){
+
+      texto +=
+      "<button onclick=\"seleccionarCursada('" + c.id + "')\">" +
+      c.materia + " - " +
+      c.comision + " (" +
+      c.estado +
+      ")" +
+      "</button><br><br>";
+
+    });
+
+
+    document.getElementById("materiaActual").innerHTML = texto;
+
+
+  });
+
+}
+
+
+
+function seleccionarCursada(id){
+
+  localStorage.setItem(
+    "cursadaActual",
+    id
+  );
+
+  document.getElementById("materiaActual").innerHTML =
+  "Cursada seleccionada: " + id;
+
+}
 
 
 
