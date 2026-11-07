@@ -791,15 +791,31 @@ function cambiarCursada(){
 
 function seleccionarCursada(id){
 
-  localStorage.setItem(
-    "cursadaActual",
-    id
-  );
+  localStorage.setItem("cursadaActual", id);
 
-  document.getElementById("materiaActual").innerHTML =
-  "Cursada seleccionada: " + id;
+  const url = "https://script.google.com/macros/s/AKfycbzZQpqXxzOZ42upnAb1t8eBg7WSOCPknYqNMyumVAdpq_Z_u9T3tLx6pmaYOEon666LyQ/exec";
+
+  fetch(url + "?cursadas=true")
+    .then(r => r.json())
+    .then(cursadas => {
+
+      const c = cursadas.find(x => x.id === id);
+
+      if(c){
+
+        document.getElementById("materiaActual").innerHTML =
+          "<b>Cursada actual</b><br>" +
+          c.materia + "<br>" +
+          c.carrera + "<br>" +
+          c.comision + "<br>" +
+          (c.estado === "ABIERTA" ? "🟢 ABIERTA" : "🔴 CERRADA");
+
+      }
+
+    });
 
 }
+
 
 
 
