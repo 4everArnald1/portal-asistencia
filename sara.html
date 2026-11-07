@@ -752,6 +752,9 @@ window.open(
 
 verificarSesion();
 
+cargarCursadaGuardada();
+
+
 
 function cambiarCursada(){
 
@@ -817,6 +820,17 @@ function seleccionarCursada(id){
 }
 
 
+function cargarCursadaGuardada(){
+
+  const id = localStorage.getItem("cursadaActual");
+
+  if(id){
+
+    seleccionarCursada(id);
+
+  }
+
+}
 
 
 
