@@ -231,7 +231,7 @@ function seleccionarCursada(id) {
       localStorage.setItem("circuitoSARA", circuito);
 
       if (c) {
-        const badgeCircuito = circuito === "med" ? "Medicina (_Med)" : "General / Licenciaturas";
+        const badgeCircuito = circuito === "med" ? "Medicina" : "Licenciaturas";
         document.getElementById("materiaActual").innerHTML =
           "<b>Cursada actual</b><br>" +
           c.materia + "<br>" +
